@@ -1,0 +1,101 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #2a2366;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+h1 {
+  color: #f9dcc4;
+  font-size: 55px;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+label {
+  font-size: 18px;
+  color: #ffbfa3;
+  font-style: italic;
+  font-weight: bold;
+}
+
+input[type="number"] {
+  padding: 12px;
+  font-size: 16px;
+  width: 220px;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.restartGame {
+  background-color: #fcbf49;
+  border-radius: 50%;
+  padding: 14px;
+  width: 55px;
+  height: 55px;
+  font-size: 22px;
+  color: #1f1d36;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  transition: transform 0.4s ease, background-color 0.4s;
+}
+
+.restartGame:hover {
+  background-color: #f77f00;
+  transform: rotate(180deg);
+}
+
+#result {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #ff0000;
+  min-height: 24px;
+  transition: color 0.2s ease;
+}
+
+.correct {
+  color: #00ff88 !important;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.fade-in.show {
+  opacity: 0.7;
+}

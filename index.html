@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  </head>
+  <body>
+    <h1>Sfida e Gjetjes se Numrit!</h1>
+    <p>Po e mendoj nje numer ndermjet 1 dhe 100. A mund ta gjesh ate?</p>
+
+    <!--Input field for the users guess-->
+    <label for="guessInput">Shkruaj supozimin tend:</label>
+    <input type="number" id="guessInput" placeholder="Vendos nje numer" />
+
+    <!--Button to submit the guess-->
+    <button onclick="checkGuess()">Perfundoni Supozimin</button>
+
+    <!-- Area to display results like : Too High! , Too Low! or Correct!-->
+    <p id="result"></p>
+
+    <!-- Button to restart the game-->
+    <button class="restartGame" onclick="restartGame()" title="Rifillo lojen">
+      <i class="fas fa-rotate-right"></i>
+    </button>
+
+    <script>
+      //  Step 1: Generate a random number between 1 and 100
+      let secretNumber = Math.floor(Math.random() * 100) + 1;
+      console.log("Secret Number:", secretNumber); //For testing in the console
+
+      function restartGame() {
+        secretNumber = Math.floor(Math.random() * 100) + 1;
+        document.getElementById("result").textContent = "";
+        document.getElementById("guessInput").value = "";
+        console.log("Secret Number:", secretNumber); // For testing
+      }
+
+      // Function to check the user's geuss
+      function checkGuess() {
+        const guess = Number(document.getElementById("guessInput").value);
+        const resultElement = document.getElementById("result");
+
+        resultElement.classList.remove("show", "correct");
+        resultElement.classList.add("fade-in");
+        resultElement.textContent = "";
+
+        setTimeout(() => {
+          if (guess === secretNumber) {
+            resultElement.textContent = "E sakte! E gjetet!";
+            resultElement.classList.add("correct");
+
+            // 🎉 SHOW CONFETTI HERE
+            confetti({
+              particleCount: 150,
+              spread: 70,
+              origin: { y: 0.6 },
+            });
+          } else if (guess < secretNumber) {
+            resultElement.textContent =
+              "Numri eshte me i larte! Provo perseri.";
+          } else {
+            resultElement.textContent =
+              "Numri eshte me i vogel! Provo Perseri.";
+          }
+
+          resultElement.classList.add("show");
+        }, 200);
+      }
+
+      // Lejon shtypjen e ENTER për të kontrolluar supozimin
+      document
+        .getElementById("guessInput")
+        .addEventListener("keydown", function (event) {
+          if (event.key === "Enter") {
+            checkGuess();
+          }
+        });
+    </script>
+  </body>
+</html>
