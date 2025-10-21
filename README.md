@@ -1,2 +1,3 @@
 # guessGame
-My game
+My game , guess the number
+
